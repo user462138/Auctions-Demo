@@ -29,14 +29,13 @@
     }
 }
 
-<h1>Details</h1>
 <h4 style="text-align:center">@Model.Title</h4>
-<div class="container" style="background-color:rgb(138,129,133,0.6); margin-top: 50px; margin-bottom: 50px; padding: 20px; border-radius: 10px">
+<div class="container" style="background-color: rgba(138, 129, 133, 0.6); margin-top: 50px; margin-bottom: 50px; padding: 20px; border-radius:10px;">
     <div class="row">
         <div class="col col-xs-6 col-lg-5">
-            <img src="~/Images/@Model.ImagePath" style="width: 100%; max-height: 60vh" />
+            <img src="~/Images/@Model.ImagePath" style="width: 100%; max-height: 60vh;" />
         </div>
-        <div class="col col-xs-6 col-lg-5">
+        <div class="col col-xs-6 col-lg-7">
             <div>@Model.Description</div>
             @if (User.Identity.IsAuthenticated)
             {
@@ -45,17 +44,17 @@
                         Bid: $ <input type="number" min="@Model.Price" step="1" name="Price" placeholder="@Model.Price.ToString("N2")" />
                         <input type="hidden" name="IdentityUserId" class="form-control" value="@userManager.GetUserId(User)" />
                         <input type="hidden" name="ListingId" class="form-control" value="@Model.Id" />
-                        <input type="submit" class="btn btn-primary" />
+                        <input type="submit" class="btn btn-primary">
                     </div>
                 </form>
                 <p>Bids submitted: @Model.Bids.Count</p>
-                <br />
+                <br>
                 @if (userManager.GetUserId(User) == Model.User.Id)
                 {
                     @foreach (var bid in Model.Bids)
                     {
-                        <ul style="list-style-type: none">
-                            @bid.User.UserName bidded $@bid.Price.ToString("N2")
+                        <ul style="list-style-type: none;">
+                            @bid.User.UserName bidded $@bid.Price.ToString("N2").
                         </ul>
                     }
                 }
@@ -64,12 +63,12 @@
             {
                 <div>
                     Bid: $ <input type="number" min="@Model.Price" step="1" name="Price" placeholder="@Model.Price.ToString("N2")" />
-                    <input type="submit" class="btn btn-primary" />
-                    <p>Bids submitted: @Model.Bids.Count</p>
+                    <input disabled type="submit" class="btn btn-primary">
                 </div>
+                <p>Bids submitted: @Model.Bids.Count</p>
             }
 
-            <div>Listed bu: @Model.User.UserName </div>
+            <div>Listed by: @Model.User.UserName</div>
 
             @if (User.Identity.IsAuthenticated)
             {
@@ -81,7 +80,6 @@
                     }
                 }
             }
-
         </div>
     </div>
 </div>
