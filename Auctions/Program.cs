@@ -23,6 +23,7 @@ namespace Auctions
 
             builder.Services.AddScoped<IListingsService, ListingsService>();
             builder.Services.AddScoped<IBidsService, BidsService>();
+            builder.Services.AddScoped<ICommentsService, CommentsService>();
 
             var app = builder.Build();
 
